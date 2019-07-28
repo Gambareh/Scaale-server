@@ -12,40 +12,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.scale.handler.entites.Artical;
-import com.scale.handler.services.ArticalService;
+import com.scale.handler.entites.Group;
+import com.scale.handler.services.GroupService;
 
 @RestController
-@RequestMapping("/articals")
-public class ArticalController {
+@RequestMapping("/groups")
+public class GroupController {
 	
 	@Autowired
-	private ArticalService service;
+	private GroupService groupService;
 	
 	@GetMapping
-	public List<Artical> getAllArticals(){
-		return service.getAllArtical();	
+	public List<Group> getAllGroup(){
+		return groupService.getAllGroup();
 	}
 	
-	@GetMapping("{id}")
-	public Artical getArtical(@PathVariable Integer id) {
-		return service.getArtical(id);
-		
+	@GetMapping({"id"})
+	public Group getGroup(@PathVariable int id) {
+		return groupService.getGroup(id);
 	}
+	
 	@PostMapping
-	public void createArtical(@RequestBody Artical artical) {
-		service.createArtical(artical);
+	public void createGroup(@RequestBody Group group) {
+		groupService.createGroup(group);
 	}
 	
 	@PutMapping
-	public void updateArtical(@RequestBody Artical artical) {
-		service.updateArtical(artical);
+	public void updateGroup(@RequestBody Group group) {
+		groupService.updateGroup(group);
 	}
 	
-	@DeleteMapping("{id}")
-	public void deleteArtical(@PathVariable Integer id ) {
-		service.deleteArtical(id);
+	@DeleteMapping
+	public void deleteArtical(@PathVariable int id) {
+		groupService.deleteGroup(id);
 	}
-	
 	
 }

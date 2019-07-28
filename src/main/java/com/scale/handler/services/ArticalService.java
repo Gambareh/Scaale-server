@@ -25,8 +25,16 @@ public class ArticalService {
 		return articalRepo.findById(id).get();
 	}
 	
+	public void createArtical(Artical artical) {
+		articalRepo.save(artical);
+	}
+	
 	public void updateArtical(Artical artical) {
 		articalRepo.save(artical);
+	}
+	
+	public void deleteArtical(int id) {
+		articalRepo.deleteById(id);
 	}
 	
 	
