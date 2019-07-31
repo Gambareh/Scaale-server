@@ -3,6 +3,8 @@ package com.scale.handler.restappi;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,28 +25,32 @@ public class ArticalController {
 	private ArticalService service;
 	
 	@GetMapping
-	public List<Artical> getAllArticals(){
-		return service.getAllArtical();	
+	public ResponseEntity<List<Artical>> getAllArticals(){
+		List<Artical> articalList = service.getAllArtical();
+		return new ResponseEntity<List<Artical>>(articalList,HttpStatus.OK);
 	}
 	
 	@GetMapping("{id}")
-	public Artical getArtical(@PathVariable Integer id) {
-		return service.getArtical(id);
+	public ResponseEntity<Artical> getArtical(@PathVariable Integer id) {
+		return new ResponseEntity<Artical>(service.getArtical(id),HttpStatus.OK);
 		
 	}
 	@PostMapping
-	public void createArtical(@RequestBody Artical artical) {
+	public ResponseEntity<String> createArtical(@RequestBody Artical artical) {
 		service.createArtical(artical);
+		return new ResponseEntity<String>(HttpStatus.CREATED);
 	}
 	
 	@PutMapping
-	public void updateArtical(@RequestBody Artical artical) {
+	public ResponseEntity<Artical> updateArtical(@RequestBody Artical artical) {
 		service.updateArtical(artical);
+		return new ResponseEntity<Artical>(HttpStatus.OK);
 	}
 	
 	@DeleteMapping("{id}")
-	public void deleteArtical(@PathVariable Integer id ) {
+	public ResponseEntity<Artical>  deleteArtical(@PathVariable Integer id ) {
 		service.deleteArtical(id);
+		return new ResponseEntity<Artical>(HttpStatus.OK);
 	}
 	
 	

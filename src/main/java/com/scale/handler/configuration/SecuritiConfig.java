@@ -20,6 +20,8 @@ public class SecuritiConfig extends WebSecurityConfigurerAdapter{
 		http.httpBasic().and().authorizeRequests().antMatchers("/articals/**")
 		.hasRole("USER").antMatchers("/groups/**").hasRole("USER").and().csrf().disable()
 		.headers().frameOptions().disable();
+		;
+		
 		
 	}
 	

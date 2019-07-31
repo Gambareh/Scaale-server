@@ -16,15 +16,20 @@ public class Artical {
 	
 	@Id
 	private int code;
+	
 	@Column(name = "display_name")
 	private String displayName;
+	
 	@Column(name = "is_active")
 	private String isActive;
+	
 	private String name;
+	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "group_id")
 	private Group group;
+	
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
